@@ -7,6 +7,10 @@ app = Flask(__name__)
 BOT_TOKEN = '7634693292:AAG0R0BzpJkPrva769oeVcFHhPnbEDjw9zE'  # Замените на токен вашего бота
 CHAT_ID = '-1002498883253'  # Замените на ID канала или пользователя
 
+@app.route('/')
+def home():
+    return 'Welcome to the website!'
+
 @app.route('/send_message', methods=['POST'])
 def send_message():
     name = request.form.get('name')
