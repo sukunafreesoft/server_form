@@ -4,7 +4,7 @@ import os
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)  # Разрешаем кросс-доменные запросы
+CORS(app)  # Разрешаем все CORS запросы
 
 BOT_TOKEN = '7634693292:AAG0R0BzpJkPrva769oeVcFHhPnbEDjw9zE'  # Замените на токен вашего бота
 CHAT_ID = '-1002498883253'  # Замените на ID канала или пользователя
