@@ -1,5 +1,6 @@
 from flask import Flask, request
 import requests
+import os
 
 app = Flask(__name__)
 
@@ -11,6 +12,9 @@ def send_message():
     name = request.form.get('name')
     telegram = request.form.get('telegram')
     message = request.form.get('message')
+
+    if not name or not telegram or not message:
+        return 'Ошибка: все поля должны быть заполнены.', 400
 
     text = f"💬 Новое сообщение с сайта:\n👤 Имя: {name}\n📱 Telegram: {telegram}\n✉️ Сообщение: {message}"
 
@@ -25,4 +29,5 @@ def send_message():
         return 'Ошибка при отправке сообщения.', 500
 
 if __name__ == '__main__':
-    app.run(port=3000)
+    port = int(os.environ.get('PORT', 3000))  # Используйте переменную окружения PORT
+    app.run(host='0.0.0.0', port=port)  # Убедитесь, что сервер слушает на всех интерфейсах
